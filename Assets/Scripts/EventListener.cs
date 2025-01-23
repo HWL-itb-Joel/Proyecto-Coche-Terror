@@ -6,6 +6,7 @@ public class EventListener : MonoBehaviour
 {
     [SerializeField] GameObject Radio;
     AudioSource LocutorRadio;
+    [SerializeField] GameObject RadioOnSound;
 
     [SerializeField] GameObject KickWindow;
 
@@ -16,8 +17,12 @@ public class EventListener : MonoBehaviour
     [SerializeField] AudioClip A_Locutor5;
     [SerializeField] AudioClip A_Locutor6;
 
+    [SerializeField] AudioClip Music;
+
     private void Awake()
     {
+        RadioOnSound.SetActive(false);
+        Radio.SetActive(false);
         LocutorRadio = Radio.GetComponent<AudioSource>();
         LocutorRadio.clip = A_Locutor1;
     }
@@ -44,7 +49,9 @@ public class EventListener : MonoBehaviour
 
     IEnumerator StartLocutor()
     {
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(4f);
+        RadioOnSound.SetActive(true);
+        yield return new WaitUntil(() => !RadioOnSound.GetComponent<AudioSource>().isPlaying);
         Radio.SetActive(true);
         StartCoroutine(AudioStoped());
     }
@@ -68,7 +75,7 @@ public class EventListener : MonoBehaviour
         }
         else if (LocutorRadio.clip == A_Locutor4)
         {
-            
+            StartCoroutine(StartMusic());
         }
         
         
@@ -77,8 +84,10 @@ public class EventListener : MonoBehaviour
 
     IEnumerator StartAudio2()
     {
-        LocutorRadio.clip = A_Locutor2;
+        LocutorRadio.clip = A_Locutor4;
         yield return new WaitForSeconds(1f);
+        LocutorRadio.enabled = true;
+        GetComponent<Animator>().SetTrigger("change");
         LocutorRadio.enabled = true;
         StartCoroutine(AudioStoped());
     }
@@ -95,7 +104,14 @@ public class EventListener : MonoBehaviour
     {
         LocutorRadio.clip = A_Locutor4;
         yield return new WaitForSeconds(2f);
-        GetComponent<Animator>().SetTrigger("change");
+        
+        StartCoroutine(AudioStoped());
+    }
+
+    IEnumerator StartMusic()
+    {
+        LocutorRadio.clip = Music;
+        yield return new WaitForSeconds(1f);
         LocutorRadio.enabled = true;
         StartCoroutine(AudioStoped());
     }
