@@ -14,7 +14,9 @@ public class EventListener : MonoBehaviour
     [SerializeField] GameObject KickWindow;
 
     [SerializeField] GameObject Notify;
-
+    [SerializeField] GameObject UIIntroControls;
+    Animator uiAnimators;
+ 
     [SerializeField] AudioSource SoundEffects;
     AudioSource LocutorRadio;
 
@@ -35,6 +37,8 @@ public class EventListener : MonoBehaviour
 
     private void Awake()
     {
+        UIIntroControls.SetActive(true);
+        uiAnimators = UIIntroControls.GetComponent<Animator>();
         SoundEffects.enabled = false;
         SoundEffects.clip = DramaticHit;
         RadioOnSound.SetActive(false);
@@ -66,31 +70,31 @@ public class EventListener : MonoBehaviour
 
     IEnumerator StartLocutor()
     {
-        yield return new WaitForSeconds(4f);
+        yield return new WaitForSecondsRealtime(4f);
         RadioOnSound.SetActive(true);
         yield return new WaitUntil(() => !RadioOnSound.GetComponent<AudioSource>().isPlaying);
         SetSubtitle("Buenas noches, son las 11:23 PM y estás sintonizando Radio Ruta 103");
         Radio.SetActive(true);
         StartCoroutine(AudioStoped());
-        yield return new WaitForSeconds(5.2f);
+        yield return new WaitForSecondsRealtime(5.2f);
         SetSubtitle("la mejor compañía para los viajeros nocturnos.");
-        yield return new WaitForSeconds(3.2f);
+        yield return new WaitForSecondsRealtime(3.2f);
         SetSubtitle("El clima para esta noche es tranquilo,");
-        yield return new WaitForSeconds(2.3f);
+        yield return new WaitForSecondsRealtime(2.3f);
         SetSubtitle("con cielos despejados y una ligera brisa que acompaña a las estrellas.");
-        yield return new WaitForSeconds(3.4f);
+        yield return new WaitForSecondsRealtime(3.4f);
         SetSubtitle("Ideal para un viaje relajante por carretera.");
-        yield return new WaitForSeconds(3.1f);
+        yield return new WaitForSecondsRealtime(3.1f);
         SetSubtitle("Y sobre todo,");
-        yield return new WaitForSeconds(0.9f);
+        yield return new WaitForSecondsRealtime(0.9f);
         SetSubtitle("recuerden mantener la vista al frente con las luces encendidas,");
         Notify.SetActive(true);
         Notify.GetComponent<TextMeshProUGUI>().text = "Nota: Mantén la vista al frente con las luces encendidas.";
-        yield return new WaitForSeconds(3.8f);
+        yield return new WaitForSecondsRealtime(3.8f);
         SetSubtitle("sí estáis demasiado tiempo distraídos, podríais perder el control...");
-        yield return new WaitForSeconds(4.2f);
+        yield return new WaitForSecondsRealtime(4.2f);
         SetSubtitle("y nadie quiere que su viaje termine de una forma inesperada.");
-        yield return new WaitForSeconds(3.4f);
+        yield return new WaitForSecondsRealtime(3.4f);
         SetSubtitle("");
     }
 
@@ -116,70 +120,69 @@ public class EventListener : MonoBehaviour
             StartCoroutine(StartMusic());
         }
         
-        
         Debug.Log("STOP");
     }
 
     IEnumerator StartAudio2()
     {
         LocutorRadio.clip = A_Locutor2;
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSecondsRealtime(1f);
         LocutorRadio.enabled = true;
         StartCoroutine(AudioStoped());
         SetSubtitle("En otras noticias,");
-        yield return new WaitForSeconds(1.4f);
+        yield return new WaitForSecondsRealtime(1.4f);
         SetSubtitle("la feria anual del condado ha abierto hoy sus puertas con gran éxito,");
-        yield return new WaitForSeconds(3.7f);
+        yield return new WaitForSecondsRealtime(3.7f);
         SetSubtitle("atrayendo a cientos de miles de visitantes.");
-        yield return new WaitForSeconds(2.5f);
+        yield return new WaitForSecondsRealtime(2.5f);
         SetSubtitle("La atracción principal ha sido la rueda de la fortuna con diferencia.");
-        yield return new WaitForSeconds(3.7f);
+        yield return new WaitForSecondsRealtime(3.7f);
         SetSubtitle("Y se espera gran éxito con el espectáculo de fuegos artificiales programado para mañana por la noche.");
-        yield return new WaitForSeconds(5.5f);
+        yield return new WaitForSecondsRealtime(5.5f);
         SetSubtitle("Y si eres amante de los animales,");
-        yield return new WaitForSeconds(1.6f);
+        yield return new WaitForSecondsRealtime(1.6f);
         SetSubtitle("te encantará saber que el refugio local organizará una adopción especial este fin de semana.");
-        yield return new WaitForSeconds(5.1f);
+        yield return new WaitForSecondsRealtime(5.1f);
         SetSubtitle("No olvides pasar y darle un hogar a una mascota que lo necesite.");
-        yield return new WaitForSeconds(3.5f);
+        yield return new WaitForSecondsRealtime(3.5f);
         SetSubtitle("");
-        yield return new WaitForSeconds(0.3f);
+        yield return new WaitForSecondsRealtime(0.3f);
         SetSubtitle("Ahora una breve actualización de tráfico.");
-        yield return new WaitForSeconds(1.9f);
+        yield return new WaitForSecondsRealtime(1.9f);
         SetSubtitle("La carretera principal en dirección norte está completamente despejada.");
-        yield return new WaitForSeconds(4f);
+        yield return new WaitForSecondsRealtime(4f);
         SetSubtitle("Pero cuidado:");
-        yield return new WaitForSeconds(0.7f);
+        yield return new WaitForSecondsRealtime(0.7f);
         SetSubtitle("reportan niebla en algunos tramos,");
-        yield return new WaitForSeconds(1.9f);
+        yield return new WaitForSecondsRealtime(1.9f);
         SetSubtitle("así que mantén las luces encendidas y presta atención al camino.");
-        yield return new WaitForSeconds(3.4f);
+        yield return new WaitForSecondsRealtime(3.4f);
         SetSubtitle("");
     }
 
     IEnumerator StartAudio3()
     {
         LocutorRadio.clip = A_Locutor3;
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSecondsRealtime(1f);
         LocutorRadio.enabled = true;
         StartCoroutine(AudioStoped());
         SetSubtitle("Hablando de mantener la atención.");
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSecondsRealtime(2f);
         SetSubtitle("");
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSecondsRealtime(0.5f);
         SetSubtitle("¿te ha pasado alguna vez sentir que alguien te está observando mientras conduces?");
-        yield return new WaitForSeconds(4.5f);
+        yield return new WaitForSecondsRealtime(4.5f);
         SetSubtitle("");
-        yield return new WaitForSeconds(0.8f);
+        yield return new WaitForSecondsRealtime(0.8f);
         SetSubtitle("Quizá solo sea el cansancio...");
-        yield return new WaitForSeconds(2.2f);
+        yield return new WaitForSecondsRealtime(2.2f);
         SetSubtitle("");
-        yield return new WaitForSeconds(0.7f);
+        yield return new WaitForSecondsRealtime(0.7f);
         SetSubtitle("O tal vez...");
-        yield return new WaitForSeconds(1.1f);
+        yield return new WaitForSecondsRealtime(1.1f);
         SetSubtitle("no estás tan solo como crees.");
         SoundEffects.enabled = true;
-        yield return new WaitForSeconds(2.6f);
+        yield return new WaitForSecondsRealtime(2.6f);
         SetSubtitle("");
         yield return new WaitUntil(() => !SoundEffects.isPlaying);
         SoundEffects.enabled = false;
@@ -188,16 +191,26 @@ public class EventListener : MonoBehaviour
     IEnumerator StartAudio4()
     {
         LocutorRadio.clip = A_Locutor4;
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSecondsRealtime(2f);
         LocutorRadio.enabled = true;
         GetComponent<Animator>().SetTrigger("change");
+        uiAnimators.SetTrigger("DisableContrls");
         StartCoroutine(AudioStoped());
+        SetSubtitle("¡Pero no te preocupes!");
+        yield return new WaitForSecondsRealtime(1.1f);
+        SetSubtitle("¡Porque aquí estamos para acompañarte!");
+        yield return new WaitForSecondsRealtime(1.9f);
+        SetSubtitle("Y ahora, una canción clásica para animar el viaje.");
+        yield return new WaitForSecondsRealtime(3f);
+        SetSubtitle("¡Sube el volumen y disfruta!");
+        yield return new WaitForSecondsRealtime(1.8f);
+        SetSubtitle("");
     }
 
     IEnumerator StartMusic()
     {
         LocutorRadio.clip = Music;
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSecondsRealtime(1f);
         LocutorRadio.enabled = true;
         StartCoroutine(AudioStoped());
     }
