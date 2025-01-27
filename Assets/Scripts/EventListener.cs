@@ -5,11 +5,20 @@ using UnityEngine;
 
 public class EventListener : MonoBehaviour
 {
+    [SerializeField] TextMeshProUGUI subtitles;
+    [Header("GameObjects")]
     [SerializeField] GameObject Radio;
-    AudioSource LocutorRadio;
+    
     [SerializeField] GameObject RadioOnSound;
 
     [SerializeField] GameObject KickWindow;
+
+    [SerializeField] GameObject Notify;
+
+    [SerializeField] AudioSource SoundEffects;
+    AudioSource LocutorRadio;
+
+    [Header("Audios")]
 
     [SerializeField] AudioClip A_Locutor1;
     [SerializeField] AudioClip A_Locutor2;
@@ -20,12 +29,14 @@ public class EventListener : MonoBehaviour
 
     [SerializeField] AudioClip Music;
 
-    [SerializeField] GameObject Notify;
+    [SerializeField] AudioClip DramaticHit;
 
-    [SerializeField] TextMeshProUGUI subtitles;
+    
 
     private void Awake()
     {
+        SoundEffects.enabled = false;
+        SoundEffects.clip = DramaticHit;
         RadioOnSound.SetActive(false);
         Radio.SetActive(false);
         Notify.SetActive(false);
@@ -78,7 +89,7 @@ public class EventListener : MonoBehaviour
         yield return new WaitForSeconds(3.8f);
         SetSubtitle("sí estáis demasiado tiempo distraídos, podríais perder el control...");
         yield return new WaitForSeconds(4.2f);
-        SetSubtitle("y nadie quiere que su viaje termine de forma inesperada.");
+        SetSubtitle("y nadie quiere que su viaje termine de una forma inesperada.");
         yield return new WaitForSeconds(3.4f);
         SetSubtitle("");
     }
@@ -118,13 +129,32 @@ public class EventListener : MonoBehaviour
         SetSubtitle("En otras noticias,");
         yield return new WaitForSeconds(1.4f);
         SetSubtitle("la feria anual del condado ha abierto hoy sus puertas con gran éxito,");
-        yield return new WaitForSeconds(3.6f);
+        yield return new WaitForSeconds(3.7f);
         SetSubtitle("atrayendo a cientos de miles de visitantes.");
         yield return new WaitForSeconds(2.5f);
         SetSubtitle("La atracción principal ha sido la rueda de la fortuna con diferencia.");
         yield return new WaitForSeconds(3.7f);
         SetSubtitle("Y se espera gran éxito con el espectáculo de fuegos artificiales programado para mañana por la noche.");
         yield return new WaitForSeconds(5.5f);
+        SetSubtitle("Y si eres amante de los animales,");
+        yield return new WaitForSeconds(1.6f);
+        SetSubtitle("te encantará saber que el refugio local organizará una adopción especial este fin de semana.");
+        yield return new WaitForSeconds(5.1f);
+        SetSubtitle("No olvides pasar y darle un hogar a una mascota que lo necesite.");
+        yield return new WaitForSeconds(3.5f);
+        SetSubtitle("");
+        yield return new WaitForSeconds(0.3f);
+        SetSubtitle("Ahora una breve actualización de tráfico.");
+        yield return new WaitForSeconds(1.9f);
+        SetSubtitle("La carretera principal en dirección norte está completamente despejada.");
+        yield return new WaitForSeconds(4f);
+        SetSubtitle("Pero cuidado:");
+        yield return new WaitForSeconds(0.7f);
+        SetSubtitle("reportan niebla en algunos tramos,");
+        yield return new WaitForSeconds(1.9f);
+        SetSubtitle("así que mantén las luces encendidas y presta atención al camino.");
+        yield return new WaitForSeconds(3.4f);
+        SetSubtitle("");
     }
 
     IEnumerator StartAudio3()
@@ -133,6 +163,26 @@ public class EventListener : MonoBehaviour
         yield return new WaitForSeconds(1f);
         LocutorRadio.enabled = true;
         StartCoroutine(AudioStoped());
+        SetSubtitle("Hablando de mantener la atención.");
+        yield return new WaitForSeconds(2f);
+        SetSubtitle("");
+        yield return new WaitForSeconds(0.5f);
+        SetSubtitle("¿te ha pasado alguna vez sentir que alguien te está observando mientras conduces?");
+        yield return new WaitForSeconds(4.5f);
+        SetSubtitle("");
+        yield return new WaitForSeconds(0.8f);
+        SetSubtitle("Quizá solo sea el cansancio...");
+        yield return new WaitForSeconds(2.2f);
+        SetSubtitle("");
+        yield return new WaitForSeconds(0.7f);
+        SetSubtitle("O tal vez...");
+        yield return new WaitForSeconds(1.1f);
+        SetSubtitle("no estás tan solo como crees.");
+        SoundEffects.enabled = true;
+        yield return new WaitForSeconds(2.6f);
+        SetSubtitle("");
+        yield return new WaitUntil(() => !SoundEffects.isPlaying);
+        SoundEffects.enabled = false;
     }
 
     IEnumerator StartAudio4()
