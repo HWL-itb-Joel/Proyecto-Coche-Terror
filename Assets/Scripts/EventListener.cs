@@ -10,6 +10,7 @@ public class EventListener : MonoBehaviour
     [SerializeField] GameObject Radio;
     
     [SerializeField] GameObject RadioOnSound;
+    AudioSource radioOnSource;
 
     [SerializeField] GameObject KickWindow;
 
@@ -21,19 +22,24 @@ public class EventListener : MonoBehaviour
     AudioSource LocutorRadio;
 
     [Header("Audios")]
-
     [SerializeField] AudioClip A_Locutor1;
     [SerializeField] AudioClip A_Locutor2;
     [SerializeField] AudioClip A_Locutor3;
     [SerializeField] AudioClip A_Locutor4;
     [SerializeField] AudioClip A_Locutor5;
     [SerializeField] AudioClip A_Locutor6;
+    [SerializeField] AudioClip A_Locutor7;
+
+    [Space(20)]
 
     [SerializeField] AudioClip Music;
 
     [SerializeField] AudioClip DramaticHit;
 
-    
+    [Space(20)]
+
+    [SerializeField] AudioClip RadioOn;
+    [SerializeField] AudioClip RadioOff;
 
     private void Awake()
     {
@@ -41,7 +47,9 @@ public class EventListener : MonoBehaviour
         uiAnimators = UIIntroControls.GetComponent<Animator>();
         SoundEffects.enabled = false;
         SoundEffects.clip = DramaticHit;
-        RadioOnSound.SetActive(false);
+        radioOnSource = RadioOnSound.GetComponent<AudioSource>();
+        radioOnSource.enabled = false;
+        radioOnSource.clip = RadioOn;
         Radio.SetActive(false);
         Notify.SetActive(false);
         LocutorRadio = Radio.GetComponent<AudioSource>();
@@ -71,9 +79,10 @@ public class EventListener : MonoBehaviour
     IEnumerator StartLocutor()
     {
         yield return new WaitForSecondsRealtime(4f);
-        RadioOnSound.SetActive(true);
-        yield return new WaitUntil(() => !RadioOnSound.GetComponent<AudioSource>().isPlaying);
+        radioOnSource.enabled = true;
+        yield return new WaitUntil(() => !radioOnSource.isPlaying);
         SetSubtitle("Buenas noches, son las 11:23 PM y estás sintonizando Radio Ruta 103");
+        radioOnSource.enabled = false;
         Radio.SetActive(true);
         StartCoroutine(AudioStoped());
         yield return new WaitForSecondsRealtime(5.2f);
@@ -118,6 +127,10 @@ public class EventListener : MonoBehaviour
         else if (LocutorRadio.clip == A_Locutor4)
         {
             StartCoroutine(StartMusic());
+        }
+        else if (LocutorRadio.clip == A_Locutor5)
+        {
+            StartCoroutine(StartAudio5());
         }
         
         Debug.Log("STOP");
@@ -212,6 +225,20 @@ public class EventListener : MonoBehaviour
         LocutorRadio.clip = Music;
         yield return new WaitForSecondsRealtime(1f);
         LocutorRadio.enabled = true;
+        radioOnSource.clip = RadioOff;
+        yield return new WaitForSecondsRealtime(44f);
+        LocutorRadio.enabled = false;
+        LocutorRadio.clip = A_Locutor5;
+        radioOnSource.enabled = true;
+        StartCoroutine(AudioStoped());
+    }
+
+    IEnumerator StartAudio5()
+    {
+        LocutorRadio.clip = A_Locutor5;
+        yield return new WaitForSecondsRealtime(0.5f);
+        LocutorRadio.enabled = true;
+        SetSubtitle("En noticias más serias,");
         StartCoroutine(AudioStoped());
     }
 

@@ -2264,7 +2264,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 580345957}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9b8331257df4347b4af7db76a902a1f0, type: 3}
   m_Name: 
@@ -2862,7 +2862,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &839014711
 Transform:
   m_ObjectHideFlags: 0
@@ -3714,7 +3714,7 @@ Transform:
   m_GameObject: {fileID: 1035626485}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.4115769, y: 5.407086, z: -299.8}
+  m_LocalPosition: {x: 1.4115769, y: 5.407086, z: -298}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4517,7 +4517,7 @@ Transform:
   m_GameObject: {fileID: 1293065660}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.4115769, y: 5.407086, z: -299.8}
+  m_LocalPosition: {x: 1.4115769, y: 5.407086, z: -298}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -11544,7 +11544,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 24ecc5bb467b3fe4b9c1660c3678ef90, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -12.16
+      value: -16.51
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 24ecc5bb467b3fe4b9c1660c3678ef90, type: 3}
       propertyPath: m_LocalRotation.w
@@ -11865,7 +11865,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1882060389
 Transform:
   m_ObjectHideFlags: 0
@@ -12684,8 +12684,11 @@ MonoBehaviour:
   A_Locutor4: {fileID: 8300000, guid: e94b8dffde8cc4028926ef9ee5d403d0, type: 3}
   A_Locutor5: {fileID: 8300000, guid: 8d55a18d51d8b40e59d2e8df4419dc07, type: 3}
   A_Locutor6: {fileID: 8300000, guid: 8e220bac0e350454ca24a3511250eb43, type: 3}
+  A_Locutor7: {fileID: 8300000, guid: 2c8e3ba03411a44a3b80b07f607dff32, type: 3}
   Music: {fileID: 8300000, guid: 2d594a6df7cdf436bace04e96ba594ae, type: 3}
   DramaticHit: {fileID: 8300000, guid: 080b9059bac6c1541b52bc0b73ff31c9, type: 3}
+  RadioOn: {fileID: 8300000, guid: 638ee7f78deda4880aa1f99175d9cdf7, type: 3}
+  RadioOff: {fileID: 8300000, guid: cde6318a9875a6a499b4abab0d0a0d42, type: 3}
 --- !u!114 &2029961591
 MonoBehaviour:
   m_ObjectHideFlags: 0
