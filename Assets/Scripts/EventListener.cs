@@ -248,14 +248,14 @@ public class EventListener : MonoBehaviour
         SetSubtitle("Los vecinos afirman no haber escuchado nada inusual,");
         yield return new WaitForSecondsRealtime(2.7f);
         SetSubtitle("aunque describen a la familia como 'tranquila y sin problemas'.");
-        yield return new WaitForSecondsRealtime(2.7f);
-        SetSubtitle("aunque describen a la familia como 'tranquila y sin problemas'.");
-    }
-
-    void desableAnimator()
-    {
-        GetComponent<Animator>().enabled = false;
-        GetComponentInChildren<CameraMovement>().enabled = true;
+        yield return new WaitForSecondsRealtime(3.2f);
+        SetSubtitle("Los detectives han solicitado la cooperación de cualquier testigo que pueda proporcionar información sobre los hechos ocurridos esa noche.");
+        yield return new WaitForSecondsRealtime(7.3f);
+        SetSubtitle("");
+        GetComponent<Animator>().SetTrigger("change");
+        yield return new WaitForSecondsRealtime(0.3f);
+        SetSubtitle("¿Te suena familiar?");
+        yield return new WaitForSecondsRealtime(7.3f);
     }
 
     void SetSubtitle(string text)

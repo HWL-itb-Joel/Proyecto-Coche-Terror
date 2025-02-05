@@ -2856,6 +2856,7 @@ GameObject:
   - component: {fileID: 839014712}
   - component: {fileID: 839014715}
   - component: {fileID: 839014716}
+  - component: {fileID: 839014717}
   m_Layer: 0
   m_Name: RadioLight
   m_TagString: Untagged
@@ -3096,6 +3097,27 @@ AudioHighPassFilter:
   m_Enabled: 1
   m_CutoffFrequency: 750
   m_HighpassResonanceQ: 3
+--- !u!95 &839014717
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 839014710}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: bc8da8ac13abb4803a4cdedfed23cfbd, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &849836611
 GameObject:
   m_ObjectHideFlags: 0
