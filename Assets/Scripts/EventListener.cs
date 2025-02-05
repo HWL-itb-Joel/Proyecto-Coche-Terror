@@ -240,6 +240,16 @@ public class EventListener : MonoBehaviour
         LocutorRadio.enabled = true;
         SetSubtitle("En noticias m?s serias,");
         StartCoroutine(AudioStoped());
+        yield return new WaitForSecondsRealtime(1.4f);
+        SetSubtitle("se ha reportado un incidente trágico en los suburbios locales.");
+        yield return new WaitForSecondsRealtime(3.4f);
+        SetSubtitle("Las autoridades investigan un caso de homicidio en una residencia familiar.");
+        yield return new WaitForSecondsRealtime(4.2f);
+        SetSubtitle("Los vecinos afirman no haber escuchado nada inusual,");
+        yield return new WaitForSecondsRealtime(2.7f);
+        SetSubtitle("aunque describen a la familia como 'tranquila y sin problemas'.");
+        yield return new WaitForSecondsRealtime(2.7f);
+        SetSubtitle("aunque describen a la familia como 'tranquila y sin problemas'.");
     }
 
     void desableAnimator()
